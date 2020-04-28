@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.login.ResultActivity"
-            android:label="@string/title_activity_result"
+            android:name=".ui.login.ResutsActivity"
+            android:label="@string/title_activity_resuts"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ui.login.SearchActivity" />
         <activity

@@ -17,7 +17,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
     }
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, ResultActivity.class);
+        Intent intent = new Intent(this, ResutsActivity.class);
         EditText editText = (EditText) findViewById(R.id.editText);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
