@@ -1,4 +1,4 @@
-package com.example.movieapp;
+package com.example.movieapp3;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.movieapp", appContext.getPackageName());
+        assertEquals("com.example.movieapp3", appContext.getPackageName());
     }
 }
