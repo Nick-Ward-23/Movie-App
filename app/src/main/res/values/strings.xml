@@ -16,4 +16,7 @@
     <string name="google_sign">Sign in with Google</string>
     <string name="facebook_app_id">[APP_ID]</string>
     <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+    <string name="text_display">Movie Surfers</string>
+    <string name="search_movie_text">Search For Movies</string>
+    <string name="button_results">Search Results</string>
 </resources>

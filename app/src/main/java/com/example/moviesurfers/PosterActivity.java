@@ -33,9 +33,9 @@ public class PosterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poster);
 
-
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
         ShowResults();
-
+        Picasso.get().load("https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg").into(imageView);
     }
     //Find posters for movies and display them
     public void ShowResults() {

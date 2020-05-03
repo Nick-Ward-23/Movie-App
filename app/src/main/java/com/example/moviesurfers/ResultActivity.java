@@ -58,8 +58,9 @@ public class ResultActivity extends AppCompatActivity {
     }
     //send user to favorites screen
     public void onClick(View view ) {
-        Intent intent = new Intent(this, PosterActivity.class);
 
-        startActivity(intent);
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
     }
 }
