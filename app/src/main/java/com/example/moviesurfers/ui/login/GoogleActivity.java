@@ -1,4 +1,4 @@
-package com.example.movieapp3;
+package com.example.moviesurfers.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
+import com.example.moviesurfers.MainActivity;
+import com.example.moviesurfers.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -16,7 +17,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-public class MainActivity extends AppCompatActivity {
+public class GoogleActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN=0;
     private SignInButton signInButton;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         signInButton = findViewById(R.id.sign_in_button);
-
+        //see if the sign in button is pushed
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        //initialize google sign in
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -44,14 +45,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.sign_in_button);
 
     }
-    protected void onStart() {
-        super.onStart();
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        updateUI(account);
-    }
+
     private void signIn(){
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        startActivityForResult(signInIntent, RC_SIGN_IN);//start the google sign in activity
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -65,12 +62,13 @@ public class MainActivity extends AppCompatActivity {
             handleSignInResult(task);
         }
     }
+        //see if user is signed into google properly
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            Intent intent = new Intent(this, SearchActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
 
 
             startActivity(intent);
@@ -81,13 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    public void updateUI(GoogleSignInAccount account){
-        Intent intent = new Intent(this, SearchActivity.class);
-        if(account!=null){
-            startActivity(intent);
-        }
+
 
 
     }
 
-}

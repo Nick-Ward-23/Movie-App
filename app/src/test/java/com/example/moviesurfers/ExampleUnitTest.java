@@ -1,4 +1,4 @@
-package com.example.movieapp3;
+package com.example.moviesurfers;
 
 import org.junit.Test;
 

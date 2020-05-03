@@ -1,25 +1,24 @@
-package com.example.movieapp3;
+package com.example.moviesurfers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class SearchActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "com.example.movieapp.ui.login.MESSAGE";
-
+public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-        
+        setContentView(R.layout.activity_main);
     }
+
+    /** Called when the user taps the Send button */
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, ResultsActivity.class);
-        EditText editText =  view.findViewById(R.id.editText);
+        Intent intent = new Intent(this, ResultActivity.class);
+        EditText editText = (EditText) findViewById(R.id.editText);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
