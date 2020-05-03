@@ -53,7 +53,8 @@ public class ResultActivity extends AppCompatActivity {
     //take user to poster screen
     public void sendMessage(View view) {
         Intent intent = new Intent(this, PosterActivity.class);
-
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        intent.putExtra(MainActivity.EXTRA_MESSAGE, message);
         startActivity(intent);
     }
     //send user to favorites screen

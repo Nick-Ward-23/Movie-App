@@ -26,23 +26,24 @@ import org.json.JSONObject;
 import java.util.Map;
 
 public class PosterActivity extends AppCompatActivity {
-
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poster);
 
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageView);
         ShowResults();
-        Picasso.get().load("https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg").into(imageView);
+
     }
     //Find posters for movies and display them
     public void ShowResults() {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "http://www.omdbapi.com/?apikey=89bbbe58&s=";
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String message = "Dark Knight";
+
         String url_full = url + message;
 
 
@@ -54,8 +55,11 @@ public class PosterActivity extends AppCompatActivity {
                         try {
 
                             JSONObject film = new JSONObject(response);
-                            String poster = film.getString("poster");
-                            ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                            JSONArray search = film.getJSONArray("Search");
+                            JSONObject result = (JSONObject) search.get(0);
+                            String poster = result.getString("Poster");
+                            System.out.println(poster);
+
                             Picasso.get().load(poster).into(imageView);
 
                         } catch (JSONException e) {
