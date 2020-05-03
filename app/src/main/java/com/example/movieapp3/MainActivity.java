@@ -83,9 +83,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateUI(GoogleSignInAccount account){
         Intent intent = new Intent(this, SearchActivity.class);
+        if(account!=null){
+            startActivity(intent);
+        }
 
 
-        startActivity(intent);
     }
 
 }
